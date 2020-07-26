@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./components/routes/Home";
+import { Route, Switch } from "react-router-dom";
 import Crawl from "./components/routes/Crawl";
+import UrlInput from "./components/common/UrlInput";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
+    <>
+      <UrlInput />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/crawl/:url" exact component={Crawl} />
+        <Route exact path="/" component={Crawl} />
       </Switch>
-    </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;

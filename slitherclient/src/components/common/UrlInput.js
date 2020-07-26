@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-
+import history from "../../history";
+import { atom, useSetRecoilState } from "recoil";
+export const currentInputState = atom({
+  key: "currentInputState",
+  default: [],
+});
 const UrlInput = () => {
   const [currentInput, setCurrentInput] = useState("");
-  const history = useHistory();
+
+  const setCurrentInputState = useSetRecoilState(currentInputState);
 
   const handleInput = (e) => {
     setCurrentInput(e);
   };
 
   const handleStartCrawling = () => {
-    return history.push(`/crawl/${currentInput}`);
+    setCurrentInputState(currentInput);
   };
 
   return (
